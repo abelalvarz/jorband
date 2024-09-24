@@ -1,12 +1,30 @@
 import { DataTable } from 'primereact/datatable'
 import { Column } from 'primereact/column'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Tag } from 'primereact/tag';
 import { Rating } from 'primereact/rating';
 
+interface SongModel {
+    name: string,
+    chord: string,
+    usage: number
+}
+
+const songList: SongModel[] = [
+    { name: "El santo de Israel", chord: "Am", usage: 50 },
+    { name: "El santo de Israel", chord: "Am", usage: 50 },
+    { name: "El santo de Israel", chord: "Am", usage: 50 },
+    { name: "El santo de Israel", chord: "Am", usage: 50 },
+    { name: "El santo de Israel", chord: "Am", usage: 50 },
+]
+
 const CurrentList = () => {
 
-    const [songs, setSongs] = useState([]);
+    const [songs, setSongs] = useState<SongModel[]>([]);
+
+    useEffect(() => {
+        setSongs(songList)
+    }, [])
 
     const getSeverity = (song: any) => {
         switch (song.inventoryStatus) {
@@ -29,7 +47,7 @@ const CurrentList = () => {
     };
 
     const ratingBodyTemplate = (song: any) => {
-        return <Rating value={song.rating} readOnly cancel={false} />;
+        return <Rating value={100 / song.usage} readOnly cancel={false} />;
     };
 
     const header = (
@@ -39,12 +57,15 @@ const CurrentList = () => {
     );
 
     return (
-        <div className="card">
-            <DataTable header={header} value={songs} tableStyle={{ minWidth: '60rem' }}>
-                <Column field="name" header="Name"></Column>
-                <Column field="rating" header="Reviews" body={ratingBodyTemplate}></Column>
-                <Column header="Status" body={statusBodyTemplate}></Column>
-            </DataTable>
+        <div className="flex align-items-center justify-content-center w-full" >
+            <div className="card " style={{ width: '50%' }}>
+                <DataTable header={header} value={songs} tableStyle={{ minWidth: '40rem' }}>
+                    <Column field="name" header="Nombre"></Column>
+                    <Column field="chord" header="Nota"></Column>
+                    <Column field="usage" header="Reviews" body={ratingBodyTemplate}></Column>
+                    <Column header="Status" body={statusBodyTemplate}></Column>
+                </DataTable>
+            </div>
         </div>
     )
 }
