@@ -5,7 +5,7 @@ import { Column } from 'primereact/column';
 import ListDetail from './components/ListDetail';
 import CreateList from './components/CreateList';
 import { format } from 'date-fns';
-
+import { es } from 'date-fns/locale';
 
 
 const SongList = () => {
@@ -31,18 +31,20 @@ const SongList = () => {
         setDisplayDetails(true)
     };
 
-    const dateTemplate = (e:any)=>{
-        console.log(e)
-        const listdate = format(e.date,'yyyy-MM-dd')
-        return <span>{listdate}</span>
+    const dateTemplate = (e: any) => {
+        const formatedDate = format(e.date, 'EEEE, d MMMM yyyy', { locale: es });
+
+        return <>{formatedDate}</>
     }
 
     return (
-        <div>
-            <h1>Listados</h1>
-            <CreateList
-                visible={displayModal}
-                setVisible={setDisplayModal} />
+        <div className='page-container'>
+            <div className="flex justify-content-between mb-3">
+                <h1>Listados</h1>
+                <CreateList
+                    visible={displayModal}
+                    setVisible={setDisplayModal} />
+            </div>
 
             <ListDetail
                 selectedSong={selectedList}
@@ -56,6 +58,7 @@ const SongList = () => {
                 onRowSelect={onRowSelect}
                 metaKeySelection={false} >
                 <Column field="date" header="Fecha" body={dateTemplate}></Column>
+                <Column field="time" header="Hora"></Column>
             </DataTable>
         </div>
     )

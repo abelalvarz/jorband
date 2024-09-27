@@ -26,7 +26,7 @@ export default function CreateSong({ visible, setVisible }: Props) {
 
     return (
         <div>
-            <Button label="Agregar Canción" icon="pi pi-external-link" onClick={() => setVisible(true)} />
+            <Button label="Agregar Canción" onClick={() => setVisible(true)} />
             <Dialog header="Agregar Canción" visible={visible} style={{ width: '100%' }} onHide={() => { if (!visible) return; setVisible(false); }}>
                 <div className="card flex flex-column justify-content-around">
                     <div className="m-1 w-full">

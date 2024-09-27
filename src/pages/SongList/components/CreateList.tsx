@@ -4,8 +4,8 @@ import SongViewData from '../../Repertoire/components/SongViewData';
 import { useState } from 'react';
 import { SongListService } from '../../../services/Sevices.SongList';
 import { Song } from '../../../models/Model.Song';
-import { Calendar } from 'primereact/calendar';
 import { OrderList } from 'primereact/orderlist';
+import ListTimeSetter from './ListTimeSetter';
 
 
 interface Props {
@@ -18,7 +18,10 @@ const CreateList = ({ visible, setVisible }: Props) => {
 
     const [selectedSong, setSelectedSong] = useState([]);
     const [displayOrderList, setDisplayOrderList] = useState(false);
-    const [listDate, setListDate] = useState<any>();
+    const [listDate, setListDate] = useState<any>({
+        date: null,
+        time: null
+    });
 
     const footer = () => {
         return (
@@ -47,29 +50,24 @@ const CreateList = ({ visible, setVisible }: Props) => {
         const songsToSave = selectedSong.map((song: Song) => {
             return { name: song.name, chord: song.chord, usage: song.usage }
         })
-        console.log("song:", songsToSave)
-
-        const response = listService.createList(songsToSave)
+        const response = listService.createList({date: listDate, songs: songsToSave})
         console.log(response)
     }
 
     return (
         <div>
-            <Button label="Nuevo Listado" icon="pi pi-external-link" onClick={() => setVisible(true)} />
+            <Button label="Nuevo Listado" onClick={() => setVisible(true)} />
             <Dialog header="Nuevo Listado" footer={footer} visible={visible} style={{ width: '100%', height: '90vh' }} onHide={() => setVisible(!visible)} >
                 <div className="card flex flex-column justify-content-around">
                     {displayOrderList ? (
                         <>
-                            <div className="">
-                                <label htmlFor="buttondisplay" className=" block mb-2">
-                                    Fecha del Listado:
-                                </label>
-                                <Calendar id="buttondisplay" style={{width:'100%'}} value={listDate} onChange={(e) => setListDate(e.value)} showIcon />
-                            </div>
+                            <ListTimeSetter
+                                listDate={listDate}
+                                setListDate={setListDate} />
                             <OrderList
                                 dataKey="id"
                                 value={selectedSong}
-                                onChange={(e:any) => setSelectedSong(e.value)}
+                                onChange={(e: any) => setSelectedSong(e.value)}
                                 itemTemplate={itemTemplate}
                                 dragdrop />
 
