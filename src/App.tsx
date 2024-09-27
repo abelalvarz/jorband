@@ -5,10 +5,10 @@ import "primereact/resources/themes/lara-light-cyan/theme.css";
 import "/node_modules/primeflex/primeflex.css"
 import 'primeicons/primeicons.css';
 
-import Home from './pages/Home/Home';
 import SongList from './pages/SongList/SongList';
 import Repertoire from './pages/Repertoire/Repertoire';
 import Logo from './components/Logo';
+import Home from './pages/Home/Home';
 
 function App() {
   return (
