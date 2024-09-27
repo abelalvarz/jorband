@@ -5,7 +5,7 @@ import "primereact/resources/themes/lara-light-cyan/theme.css";
 import "/node_modules/primeflex/primeflex.css";
 import 'primeicons/primeicons.css';
 import { HomePage } from './pages/home/HomePage';
-import { SongList } from './pages/SongLists/SongList';
+import { SongList } from './pages/SongList/SongList';
 import { Repertoire } from './pages/Repertoire/Repertoire';
 import { Logo } from './components/Logo';
 
