@@ -5,7 +5,7 @@ import { SongListService } from '../../../services/Sevices.SongList';
 import { Song } from '../../../models/Model.Song';
 import { OrderList } from 'primereact/orderlist';
 import ListTimeSetter from './ListTimeSetter';
-import SongViewData from '../../repertoire/components/SongViewData';
+import SongViewData from '../../Repertoire/components/SongViewData';
 
 
 interface Props {
