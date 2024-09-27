@@ -1,66 +1,26 @@
-import { useEffect, useState } from 'react'
-import { SongListService } from '../../services/Sevices.SongList';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import { format } from 'date-fns';
-import { es } from 'date-fns/locale';
-import ListDetail from './components/ListDetail';
-import CreateList from './components/CreateList';
+import ListCreationModal from "./components/ListCreationModal";
+import PageHeader from "./components/PageHeader";
+import ListDataView from "./components/ListDataView";
+import useSongsList from "./hooks/useSongsList";
 
+const SongList = () => {
 
-export const SongList = () => {
-
-    const songListService = new SongListService();
-
-    const [songList, setSongList] = useState<any>([]);
-    const [selectedList, setSelectedList] = useState<any>(null);
-    const [displayModal, setDisplayModal] = useState(false);
-    const [displayDetails, setDisplayDetails] = useState(false);
-
-    useEffect(() => {
-        fetchSongList()
-    }, [])
-
-    const fetchSongList = async () => {
-        const lists = await songListService.getAllList();
-        console.log(lists);
-        setSongList(lists);
-    }
-
-    const onRowSelect = () => {
-        setDisplayDetails(true)
-    };
-
-    const dateTemplate = (e: any) => {
-        const formatedDate = format(e.date, 'EEEE, d MMMM yyyy', { locale: es });
-
-        return <>{formatedDate}</>
-    }
+    const {songList, saveListado, displayModal, setDisplayModal} = useSongsList();
 
     return (
         <div className='page-container'>
-            <div className="flex justify-content-between mb-3">
-                <h1>Listados</h1>
-                <CreateList
-                    visible={displayModal}
-                    setVisible={setDisplayModal} />
-            </div>
+            <PageHeader onClick={() => setDisplayModal(true)} />
 
-            <ListDetail
-                selectedSong={selectedList}
-                visible={displayDetails}
-                setVisible={setDisplayDetails} />
+            <ListCreationModal
+                visible={displayModal}
+                onHide={() => setDisplayModal(!displayModal)}
+                saveListado={saveListado} />
 
-            <DataTable value={songList} selectionMode="single"
-                selection={selectedList!}
-                onSelectionChange={(e) => setSelectedList(e.value)}
-                dataKey="id"
-                onRowSelect={onRowSelect}
-                metaKeySelection={false} >
-                <Column field="date" header="Fecha" body={dateTemplate}></Column>
-                <Column field="time" header="Hora"></Column>
-            </DataTable>
+            <ListDataView value={songList} />
         </div>
     )
 }
+
+export default SongList
+
 

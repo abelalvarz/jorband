@@ -1,16 +1,16 @@
-import { useState } from "react";
-import CreateSong from "./components/CreateSong";
-import SongViewData from "./components/SongViewData";
+import CreateSongDialog from "./components/CreateSongDialog";
+import RepertoireTable from "./components/RepertoireView";
+import useRepertoire from "./hook/useRepertoire";
 
 export const Repertoire = () => {
-    const [displayModal, setDisplayModal] = useState(false);
+    const { visible, setVisible, saveSong, repertoire } = useRepertoire();
     return (
         <div className="page-container">
             <div className="flex justify-content-between mb-3">
                 <h1>Repertorio</h1>
-                <CreateSong visible={displayModal} setVisible={setDisplayModal} />
+                <CreateSongDialog visible={visible} setVisible={setVisible} saveSong={saveSong} />
             </div>
-            <SongViewData />
+            <RepertoireTable repertoire={repertoire} />
         </div>
     )
 }

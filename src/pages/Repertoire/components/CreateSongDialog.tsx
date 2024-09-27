@@ -1,29 +1,21 @@
-import { useState } from "react";
-import { Button } from "primereact/button";
-import { Dialog } from "primereact/dialog";
-import { InputText } from "primereact/inputtext";
-import { Song } from "../../../models/Model.Song";
-import { RepertoireService } from "../../../services/Service.Repertoire";
+import { Button } from 'primereact/button';
+import { Dialog } from 'primereact/dialog';
+import { InputText } from 'primereact/inputtext';
+import { useState } from 'react';
+import { Song } from '../../../models/Model.Song';
 
 interface Props {
     visible: boolean;
-    setVisible: (value: boolean) => void;
+    setVisible: (e: any) => void;
+    saveSong: (e: any) => void;
 }
 
-export default function CreateSong({ visible, setVisible }: Props) {
-    const songService = new RepertoireService();
-
+const CreateSongDialog = ({ visible, setVisible, saveSong }: Props) => {
     const [newSong, setNewSong] = useState<Song>({
         name: '',
         chord: '',
         usage: 0
     })
-
-    const saveNewSong = async () => {
-        const response = await songService.addSong(newSong);
-        console.log(response);
-    }
-
     return (
         <div>
             <Button label="Agregar Canción" onClick={() => setVisible(true)} />
@@ -36,7 +28,7 @@ export default function CreateSong({ visible, setVisible }: Props) {
                         <InputText placeholder="Chord" onChange={(e) => setNewSong({ ...newSong, chord: e.target.value })} />
                     </div>
                     <div className="m-1">
-                        <Button label="Guardar" onClick={() => saveNewSong()} />
+                        <Button label="Guardar" onClick={() => saveSong(newSong)} />
                     </div>
 
                 </div>
@@ -45,3 +37,4 @@ export default function CreateSong({ visible, setVisible }: Props) {
     )
 }
 
+export default CreateSongDialog

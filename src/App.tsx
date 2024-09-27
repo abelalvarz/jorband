@@ -4,10 +4,11 @@ import { Route, Routes } from 'react-router-dom';
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import "/node_modules/primeflex/primeflex.css";
 import 'primeicons/primeicons.css';
+
 import { HomePage } from './pages/home/HomePage';
-import { SongList } from './pages/SongList/SongList';
 import { Repertoire } from './pages/Repertoire/Repertoire';
 import { Logo } from './components/Logo';
+import SongList from './pages/SongList/SongList';
 
 function App() {
   return (

@@ -1,20 +1,12 @@
 import { Calendar } from 'primereact/calendar';
-import { InputText } from 'primereact/inputtext';
 
 interface Props {
-    listDate: {
-        date: any;
-        time: any;
-    }
-    setListDate: any;
+    value: any;
+    onChange: (e: any) => void;
 }
 
-const ListTimeSetter = ({ listDate, setListDate }: Props) => {
+const ListTimeSetter = ({ value, onChange }: Props) => {
 
-    const onChange = (e: any) => {
-        console.log(e.target.value.toString());
-        setListDate({ ...listDate, date: e.target.value })
-    }
     return (
         <div>
             <div className="">
@@ -23,18 +15,14 @@ const ListTimeSetter = ({ listDate, setListDate }: Props) => {
                 </label>
                 <Calendar
                     style={{ width: '100%' }}
-                    value={listDate.date}
+                    value={value}
                     onChange={(e) => onChange(e)}
                     showIcon
                     // locale='es'
+                    showTime
                     touchUI
+                    hourFormat="12"
                 />
-            </div>
-            <div className="">
-                <label htmlFor="buttondisplay" className="block mb-2">
-                    Hora:
-                </label>
-                <InputText style={{ width: '100%' }} value={listDate.time} onChange={(e)=>setListDate({...listDate, time: e.target.value})}/>
             </div>
         </div>
     )

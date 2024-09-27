@@ -28,7 +28,6 @@ export class RepertoireProvider {
 
 interface ListStructure {
   date: any;
-  time: any;
   songs: any;
   created_at: number
 }

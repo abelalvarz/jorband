@@ -4,11 +4,11 @@ import { DataTable } from 'primereact/datatable'
 import { Column } from 'primereact/column'
 
 interface Props {
-    selectedSong: any;
+    value: any;
     visible: boolean;
     setVisible: any;
 }
-export default function ListDetail({ selectedSong, visible, setVisible }: Props) {
+export default function ListDetail({ value, visible, setVisible }: Props) {
 
     const footer = () => {
         return (
@@ -21,7 +21,7 @@ export default function ListDetail({ selectedSong, visible, setVisible }: Props)
     return (
         <div>
             <Dialog header="Detalles del Listado" footer={footer} visible={visible} style={{ width: '100%', height: '90vh' }} onHide={() => setVisible(!visible)} >
-                <DataTable value={selectedSong?.songs}
+                <DataTable value={value?.songs}
                     selectionMode={null}
                     selection={null} 
                     dataKey="id" >

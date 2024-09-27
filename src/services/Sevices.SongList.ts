@@ -7,14 +7,12 @@ export class SongListService {
 
     async createList(data: any) {
         const dataTemplate = {
-            date: Date.parse(data.date.date),
-            time: data.date.time,
+            date: Date.parse(data.date),
             songs: data.songs,
             created_at: Date.now()
         }
 
         const savedList = this.listProvider.add(dataTemplate);
-        console.log(savedList);
         return savedList;
     }
 
@@ -26,14 +24,19 @@ export class SongListService {
     async getCurrentList() {
         const db = await database;
         const allLists = await db.getAll('Song_List')
-        return allLists.sort((a, b) => {
-            const currentDate: Date = new Date();  // Fecha actual
 
-            const dateA: Date = new Date(a.date);  // Convierte el campo 'date' del primer objeto a una fecha
-            const dateB: Date = new Date(b.date);  // Convierte el campo 'date' del segundo objeto a una fecha
+        const currentDate: Date = new Date();
 
-            // Compara cuál fecha está más cerca de la fecha actual
-            return Math.abs(dateA.getTime() - currentDate.getTime()) - Math.abs(dateB.getTime() - currentDate.getTime());
-        })[0];
+        const futureLists = allLists.filter(list => new Date(list.date) > currentDate);
+
+        futureLists.sort((a, b) => {
+            const dateA: Date = new Date(a.date);
+            const dateB: Date = new Date(b.date);
+
+            return dateA.getTime() - dateB.getTime(); 
+        });
+
+       
+        return futureLists[0] || null;
     }
 }
