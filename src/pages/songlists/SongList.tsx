@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import { SongListService } from '../../services/Sevices.SongList';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import ListDetail from './components/ListDetail';
-import CreateList from './components/CreateList';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
+import ListDetail from './components/ListDetail';
+import CreateList from './components/CreateList';
 
 
 export const SongList = () => {
