@@ -18,7 +18,7 @@ const ListCreationModal = ({ saveListado, visible, onHide }: Props) => {
     const [newList, setNewList] = useState<SongList>({
         songs: [],
         created_at: 0,
-        date: null,
+        date: Date.now(),
         id: 0,
     });
 
