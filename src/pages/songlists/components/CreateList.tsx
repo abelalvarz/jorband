@@ -1,11 +1,11 @@
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
-import SongViewData from '../../Repertoire/components/SongViewData';
 import { useState } from 'react';
 import { SongListService } from '../../../services/Sevices.SongList';
 import { Song } from '../../../models/Model.Song';
 import { OrderList } from 'primereact/orderlist';
 import ListTimeSetter from './ListTimeSetter';
+import SongViewData from '../../repertoire/components/SongViewData';
 
 
 interface Props {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CreateSong from "./components/CreateSong"
+import CreateSong from "./components/CreateSong";
 import SongViewData from "./components/SongViewData";
 
 const Repertoire = () => {
