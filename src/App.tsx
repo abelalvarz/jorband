@@ -7,8 +7,8 @@ import 'primeicons/primeicons.css';
 
 import SongList from './pages/SongList/SongList';
 import Repertoire from './pages/Repertoire/Repertoire';
-import Logo from './components/Logo';
 import Home from './pages/Home/Home';
+import Logo from './components/Logo';
 
 function App() {
   return (
