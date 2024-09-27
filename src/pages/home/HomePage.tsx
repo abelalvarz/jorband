@@ -1,5 +1,4 @@
 import CurrentList from "./components/CurrentList";
-import UnusedSongs from "./components/UnusedSongs";
 
 export const HomePage = () => {
   return (
