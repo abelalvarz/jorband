@@ -1,11 +1,11 @@
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
-import { OrderList } from 'primereact/orderList';
 import SongViewData from '../../Repertoire/components/SongViewData';
 import { useState } from 'react';
 import { SongListService } from '../../../services/Sevices.SongList';
 import { Song } from '../../../models/Model.Song';
 import { Calendar } from 'primereact/calendar';
+import { OrderList } from 'primereact/orderlist';
 
 
 interface Props {
@@ -69,9 +69,8 @@ const CreateList = ({ visible, setVisible }: Props) => {
                             <OrderList
                                 dataKey="id"
                                 value={selectedSong}
-                                onChange={(e) => setSelectedSong(e.value)}
+                                onChange={(e:any) => setSelectedSong(e.value)}
                                 itemTemplate={itemTemplate}
-                                // header="Ordenar Listado"
                                 dragdrop />
 
                         </>
