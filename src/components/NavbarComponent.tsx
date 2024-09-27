@@ -5,7 +5,9 @@ const NavbarComponent = () => {
     <div style={{
     }}>
       <ul>
-        <Link to='/'>Home</Link>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to="/lists">Listados</Link></li>
+        <li><Link to="/repertoire">Repertorio</Link></li>
       </ul>
 
     </div>
