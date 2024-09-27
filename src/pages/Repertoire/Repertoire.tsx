@@ -2,7 +2,7 @@ import { useState } from "react";
 import CreateSong from "./components/CreateSong";
 import SongViewData from "./components/SongViewData";
 
-const Repertoire = () => {
+export const Repertoire = () => {
     const [displayModal, setDisplayModal] = useState(false);
     return (
         <div className="page-container">
@@ -15,4 +15,3 @@ const Repertoire = () => {
     )
 }
 
-export default Repertoire

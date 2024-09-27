@@ -1,5 +1,5 @@
 
-export default function Logo() {
+export const Logo = () => {
     return (
         <div>
             <div className="logo">

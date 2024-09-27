@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 
 
-const SongList = () => {
+export const SongList = () => {
 
     const songListService = new SongListService();
 
@@ -64,4 +64,3 @@ const SongList = () => {
     )
 }
 
-export default SongList
