@@ -13,7 +13,7 @@ const ListDataView = ({ value }: Props) => {
     const [displayDetails, setDisplayDetails] = useState(false);
 
     const onRowSelect = () => {
-        setDisplayDetails(true)
+        setDisplayDetails(!displayDetails)
     };
 
     const dateTemplate = (e: any) => {
