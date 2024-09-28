@@ -13,7 +13,11 @@ const ListDataView = ({ value }: Props) => {
     const [displayDetails, setDisplayDetails] = useState(false);
 
     const onRowSelect = () => {
-        setDisplayDetails(!displayDetails)
+        setDisplayDetails(true)
+    };
+    const onRowUnselect = () => {
+        setDisplayDetails(false)
+        setSelectedList(null)
     };
 
     const dateTemplate = (e: any) => {
@@ -28,6 +32,7 @@ const ListDataView = ({ value }: Props) => {
                 onSelectionChange={(e) => setSelectedList(e.value)}
                 dataKey="id"
                 onRowSelect={onRowSelect}
+                onRowUnselect={onRowUnselect}
                 metaKeySelection={false} >
                 <Column field="date" header="Fecha" body={dateTemplate}></Column>
                 <Column field="time" header="Hora"></Column>
