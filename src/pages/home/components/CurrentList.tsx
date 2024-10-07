@@ -22,14 +22,16 @@ export default function CurrentList() {
 
     const dateTemplate = () => {
         const date = currentList!.date;
-        const formatedDate = format(date, 'EEEE, d MMMM yyyy', {locale: es});
+        const formatedDate = format(date, 'EEEE, d MMMM yyyy', { locale: es });
         return <>{formatedDate}</>
 
     }
     return (
         <div>
-            <h1>Proximo Listado</h1>
-            {currentList?.date && <p>{dateTemplate()}</p>}
+            <div className="flex justify-content-between align-items-center mb-3">
+                <h1>Proximo Listado</h1>
+                {currentList?.date && <p>{dateTemplate()}</p>}
+            </div>
             <div className="card">
                 <DataTable
                     value={currentList?.songs}

@@ -20,7 +20,7 @@ export default function ListDetail({ value, visible, setVisible }: Props) {
     }
     return (
         <div>
-            <Dialog header="Detalles del Listado" footer={footer} visible={visible} style={{ width: '100%', height: '90vh' }} onHide={() => setVisible(!visible)} >
+            <Dialog header="Detalles del Listado" footer={footer} visible={visible} className='modal' onHide={() => setVisible(!visible)} >
                 <DataTable value={value?.songs}
                     selectionMode={null}
                     selection={null} 

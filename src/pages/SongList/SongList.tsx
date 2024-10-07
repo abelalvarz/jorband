@@ -2,13 +2,13 @@ import ListCreationModal from "./components/ListCreationModal";
 import PageHeader from "./components/PageHeader";
 import ListDataView from "./components/ListDataView";
 import useSongsList from "./hooks/useSongsList";
+import { LayoutComponent } from "@/styled-components/LayoutComponent";
 
-const SongList = () => {
-
+export const SongList = () => {
     const {songList, saveListado, displayModal, setDisplayModal} = useSongsList();
 
     return (
-        <div className='page-container'>
+        <LayoutComponent>
             <PageHeader onClick={() => setDisplayModal(true)} />
 
             <ListCreationModal
@@ -17,10 +17,8 @@ const SongList = () => {
                 saveListado={saveListado} />
 
             <ListDataView value={songList} />
-        </div>
+        </LayoutComponent>
     )
 }
-
-export default SongList
 
 

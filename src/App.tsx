@@ -1,4 +1,3 @@
-import NavbarComponent from './components/NavbarComponent';
 import { Route, Routes } from 'react-router-dom';
 
 import "primereact/resources/themes/lara-light-cyan/theme.css";
@@ -7,20 +6,22 @@ import 'primeicons/primeicons.css';
 
 import { HomePage } from './pages/home/HomePage';
 import { Repertoire } from './pages/Repertoire/Repertoire';
-import { Logo } from './components/Logo';
-import SongList from './pages/SongList/SongList';
+import { SongList } from './pages/SongList/SongList';
+import './theme/themeGlobal.css'
+import { NavBar } from './components';
+import { ToastProvider } from './context/ToastContext.tsx'
 
 function App() {
   return (
-    <>
-      <NavbarComponent />
-      <Logo />
+    <ToastProvider>
+      <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/lists" element={<SongList />} />
         <Route path="/repertoire" element={<Repertoire />} />
       </Routes>
-    </>
+    </ToastProvider>
+
   )
 }
 

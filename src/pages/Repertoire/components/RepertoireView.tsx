@@ -4,6 +4,7 @@ import { DataTable } from 'primereact/datatable'
 interface Props {
     repertoire: any;
 }
+
 const RepertoireTable = ({ repertoire }: Props) => {
     return (
         <div>

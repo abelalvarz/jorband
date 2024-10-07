@@ -8,13 +8,15 @@ interface ContextType {
         message: string
     ) => void;
 }
-type MessageType = 'error' | 'warn' | 'info' | 'success';
 
-const ToastContext = createContext<ContextType | undefined>(undefined);
+type MessageType = 'error' | 'warn' | 'info' | 'success';
 
 interface Props {
     children: React.ReactNode
 }
+
+const ToastContext = createContext<ContextType | undefined>(undefined);
+
 export const ToastProvider = ({ children }: Props) => {
 
     const toastRef = useRef<any>(null);

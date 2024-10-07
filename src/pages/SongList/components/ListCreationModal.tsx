@@ -47,7 +47,7 @@ const ListCreationModal = ({ saveListado, visible, onHide }: Props) => {
 
     return (
         <div>
-            <Dialog header="Nuevo Listado" footer={footer} visible={visible} style={{ width: '100%', height: '90vh' }} onHide={onHide} >
+            <Dialog header="Nuevo Listado" footer={footer} visible={visible} className='modal' onHide={onHide} >
                 <div className="card flex flex-column justify-content-around">
                     {displayOrderList ? (
                         <>
