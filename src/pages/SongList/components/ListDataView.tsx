@@ -12,12 +12,12 @@ const ListDataView = ({ value }: Props) => {
     const [selectedList, setSelectedList] = useState<any>(null);
     const [displayDetails, setDisplayDetails] = useState(false);
 
-    const onRowSelect = () => {
-        setDisplayDetails(true)
-    };
-    const onRowUnselect = () => {
-        setDisplayDetails(false)
-        setSelectedList(null)
+    const onRowSelect = (e: any) => {
+        setSelectedList(e.value)
+        setDisplayDetails(true);
+        console.log(e.value);
+
+
     };
 
     const dateTemplate = (e: any) => {
@@ -25,21 +25,28 @@ const ListDataView = ({ value }: Props) => {
         return <>{formatedDate}</>
     }
 
+    const onhide = () => {
+        setSelectedList(null);
+        setDisplayDetails(!displayDetails);
+    }
+
     return (
         <div>
-            <DataTable value={value} selectionMode="single"
-                selection={selectedList!}
-                onSelectionChange={(e) => setSelectedList(e.value)}
+            <DataTable
+
+                value={value}
+                selectionMode="single"
+                selection={selectedList}
+                onSelectionChange={(e) => onRowSelect(e)}
                 dataKey="id"
-                onRowSelect={onRowSelect}
-                onRowUnselect={onRowUnselect}
+                // onRowUnselect={onRowUnselect}
                 metaKeySelection={false} >
                 <Column field="date" header="Fecha" body={dateTemplate}></Column>
                 <Column field="time" header="Hora"></Column>
             </DataTable>
             <ListDetail
                 visible={displayDetails}
-                setVisible={setDisplayDetails}
+                onHide={onhide}
                 value={selectedList} />
         </div>
     )
