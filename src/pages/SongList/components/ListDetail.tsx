@@ -8,7 +8,8 @@ interface Props {
     visible: boolean;
     onHide: any;
 }
-export default function ListDetail({ value, visible, onHide }: Readonly<Props>) {
+
+export const ListDetail = ({ value, visible, onHide }: Readonly<Props>) => {
 
     const footer = () => {
         return (
@@ -37,3 +38,4 @@ export default function ListDetail({ value, visible, onHide }: Readonly<Props>) 
         </div>
     )
 }
+

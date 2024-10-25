@@ -5,7 +5,7 @@ interface Props {
     onChange: (e: any) => void;
 }
 
-const ListTimeSetter = ({ value, onChange }: Props) => {
+export const ListTimeSetter = ({ value, onChange }: Props) => {
 
     return (
         <div>
@@ -27,5 +27,3 @@ const ListTimeSetter = ({ value, onChange }: Props) => {
         </div>
     )
 }
-
-export default ListTimeSetter

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useToast } from "../../../context/ToastContext";
 import { SongListService } from "../../../services/Sevices.SongList";
 
-const useSongsList = () => {
+export const useSongsList = () => {
     const toast = useToast();
     const listService = new SongListService();
 
@@ -30,4 +30,4 @@ const useSongsList = () => {
     return {songList, saveListado, displayModal, setDisplayModal}
 }
 
-export default useSongsList
+

@@ -6,7 +6,7 @@ import { SongList } from "../../../models/Model.SongList";
 import { format } from "date-fns";
 import { es } from 'date-fns/locale';
 
-export default function CurrentList() {
+export const CurrentList = () => {
     const listService = new SongListService()
 
     const [currentList, setCurrentList] = useState<SongList>();

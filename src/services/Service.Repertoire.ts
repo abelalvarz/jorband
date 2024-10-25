@@ -1,7 +1,12 @@
 import { Song } from "../models/Model.Song";
-import { database, RepertoireProvider } from "./Service.Database";
+import { data_repertoire, database, RepertoireProvider } from "./Service.Database";
 
-export class RepertoireService {
+export interface RepertoireServiceInteface{
+    addSong: (song: Song) => any;
+    getRepertoire: ()=>any;
+}
+
+export class RepertoireService implements RepertoireServiceInteface {
     repertoire = new RepertoireProvider;
 
     async addSong(song: Song) {
@@ -16,6 +21,6 @@ export class RepertoireService {
 
     async getRepertoire() {
         const db = await database;
-        return db.getAll('Repertoire');
+        return db.getAll(data_repertoire);
     }
 }

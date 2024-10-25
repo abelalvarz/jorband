@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { RepertoireService } from "../../../services/Service.Repertoire";
 import { useToast } from "../../../context/ToastContext";
 
-const useRepertoire = () => {
+export const useRepertoire = () => {
 
     const toast = useToast();
     const songService = new RepertoireService();
@@ -33,4 +33,3 @@ const useRepertoire = () => {
     return { visible, repertoire, setVisible, saveSong }
 }
 
-export default useRepertoire

@@ -1,5 +1,5 @@
 import { LayoutComponent } from "@/styled-components/LayoutComponent";
-import CurrentList from "./components/CurrentList";
+import {CurrentList} from "./components/CurrentList";
 
 export const HomePage = () => {
   return (

@@ -1,13 +1,18 @@
 import { openDB } from 'idb';
 
-export const database = openDB("Jorband_DB", 1, {
+
+export const data_play_list = "data_play_list";
+export const data_repertoire = "data_repertoire";
+
+
+export const database = openDB("jorband_database", 1, {
   upgrade(db) {
-    if (!db.objectStoreNames.contains('Song_List')) {
-      db.createObjectStore('Song_List', { keyPath: 'id', autoIncrement: true });
+    if (!db.objectStoreNames.contains(data_play_list)) {
+      db.createObjectStore(data_play_list, { keyPath: 'id', autoIncrement: true });
     }
 
-    if (!db.objectStoreNames.contains('Repertoire')) {
-      db.createObjectStore('Repertoire', { keyPath: 'id', autoIncrement: true });
+    if (!db.objectStoreNames.contains(data_repertoire)) {
+      db.createObjectStore(data_repertoire, { keyPath: 'id', autoIncrement: true });
     }
   }
 });
@@ -22,7 +27,7 @@ interface RepertoireStructure {
 export class RepertoireProvider {
   async add(data: RepertoireStructure) {
     const db = await database;
-    return db.add('Repertoire', data);
+    return db.add(data_repertoire, data);
   }
 }
 
@@ -35,6 +40,6 @@ interface ListStructure {
 export class ListProvider {
   async add(data: ListStructure) {
     const db = await database;
-    return db.add('Song_List', data);
+    return db.add(data_play_list, data);
   }
 }

@@ -1,7 +1,7 @@
-import ListCreationModal from "./components/ListCreationModal";
-import PageHeader from "./components/PageHeader";
-import ListDataView from "./components/ListDataView";
-import useSongsList from "./hooks/useSongsList";
+import {ListCreationModal} from "./components/ListCreationModal";
+import {PageHeader} from "./components/PageHeader";
+import {ListDataView} from "./components/ListDataView";
+import {useSongsList} from "./hooks/useSongsList";
 import { LayoutComponent } from "@/styled-components/LayoutComponent";
 
 export const SongList = () => {

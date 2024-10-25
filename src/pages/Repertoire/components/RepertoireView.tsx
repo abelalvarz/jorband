@@ -5,7 +5,7 @@ interface Props {
     repertoire: any;
 }
 
-const RepertoireTable = ({ repertoire }: Props) => {
+export const RepertoireTable = ({ repertoire }: Props) => {
     return (
         <div>
             <DataTable
@@ -19,4 +19,3 @@ const RepertoireTable = ({ repertoire }: Props) => {
     )
 }
 
-export default RepertoireTable

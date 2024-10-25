@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Button } from 'primereact/button'
 import { SongList } from '../../../models/Model.SongList'
 import SelectableRepertoire from '../../Repertoire/components/SelectableRepertoire'
-import ListTimeSetter from './ListTimeSetter'
+import {ListTimeSetter} from './ListTimeSetter'
 
 interface Props {
     saveListado: (e: any) => void;
@@ -12,7 +12,7 @@ interface Props {
     onHide: any;
 }
 
-const ListCreationModal = ({ saveListado, visible, onHide }: Props) => {
+export const ListCreationModal = ({ saveListado, visible, onHide }: Props) => {
 
     const [displayOrderList, setDisplayOrderList] = useState(false);
     const [newList, setNewList] = useState<SongList>({
@@ -74,4 +74,4 @@ const ListCreationModal = ({ saveListado, visible, onHide }: Props) => {
     )
 }
 
-export default ListCreationModal
+

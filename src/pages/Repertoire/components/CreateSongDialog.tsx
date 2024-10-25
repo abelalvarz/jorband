@@ -10,7 +10,7 @@ interface Props {
     saveSong: (e: any) => void;
 }
 
-const CreateSongDialog = ({ visible, setVisible, saveSong }: Props) => {
+export const CreateSongDialog = ({ visible, setVisible, saveSong }: Props) => {
 
     const [newSong, setNewSong] = useState<Song>({
         name: '',
@@ -38,5 +38,3 @@ const CreateSongDialog = ({ visible, setVisible, saveSong }: Props) => {
         </Dialog>
     )
 }
-
-export default CreateSongDialog

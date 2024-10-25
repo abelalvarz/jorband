@@ -11,7 +11,7 @@ import './theme/themeGlobal.css'
 import { NavBar } from './components';
 import { ToastProvider } from './context/ToastContext.tsx'
 
-function App() {
+export const App = () => {
   return (
     <ToastProvider>
       <NavBar />
@@ -21,8 +21,6 @@ function App() {
         <Route path="/repertoire" element={<Repertoire />} />
       </Routes>
     </ToastProvider>
-
   )
 }
 
-export default App

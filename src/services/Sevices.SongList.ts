@@ -1,4 +1,4 @@
-import { database, ListProvider } from "./Service.Database";
+import { data_play_list, database, ListProvider } from "./Service.Database";
 
 
 export class SongListService {
@@ -18,12 +18,13 @@ export class SongListService {
 
     async getAllList() {
         const db = await database;
-        return await db.getAll('Song_List')
+        return await db.getAll(data_play_list)
     }
 
+    
     async getCurrentList() {
         const db = await database;
-        const allLists = await db.getAll('Song_List')
+        const allLists = await db.getAll(data_play_list)
 
         const currentDate: Date = new Date();
 
